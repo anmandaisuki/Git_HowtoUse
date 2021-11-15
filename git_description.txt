@@ -1,0 +1,66 @@
+//cmd command on windows
+cd              移動
+dir             フォルダの中身表示
+cd ..           一つ戻る
+mkdir           ファイルを作る
+
+
+//git command
+
+git init                          新しくリポジトリローカルに作るときの初期化
+
+git add ファイル名　              　ステージング
+git add .                       　新しく追加したファイルすべてステージング
+git add ファイル名　ファイル名　    複数ファイルステージング
+
+git commit -m "コメント"　          コメント付コミット
+
+
+
+git remote add origin リポジトリのURL   リモートリポジトリの名前をoriginとして登録。originはリモートリポジトリの名前
+git remote add aaa リポジトリのURL      リモートリポジトリの名前をaaaとして登録。
+git remote -v                       登録されてるリモートリポジトリの確認
+
+
+git remote rm 削除したいリポジトリ名    リモートリポジトリ名であること注意。urlじゃない。リモートリポジトリの削除。
+git remote rm origin
+
+git clone クローンしたいリポジトリのURL     リポジトリのclone. 自動的に元のリポジトリがoriginとしてremote repositoyとして登録される。
+
+
+git pull origin リモートレポジトリのブランチ名      リモートレポジトリのブランチをいじりたいときのコマンド。
+git pull 登録したリモートレポジトリ名　リモートレポジトリのブランチ名
+
+
+git push -u origin main                                         リモートリポジトリに変更を反映。ローカルレポジトリと同じ名前のブランチがリモートリポジトリに存在しなかったら、新しいブランチがリモート上に生成される。そうでなければ上書きされる。
+git push -u　登録したリモートレポジトリ名　ローカルのブランチ名
+
+
+git branch                                  存在するブランチの確認
+git branch 作成したいbranch名               ブランチの作成
+git checkout ブランチ名　                   ブランチの切り替え
+git branch -d ブランチ名                    ブランチの削除
+
+git merge マージしたいブランチＡ　            現在のブランチにブランチAをマージする。
+流れとしてはcheckout mainでmainブランチに変更して、他のブランチをマージすることが多い。
+
+git status              リポジトリの状態を表示（現在ブランチとか、ディレクトリとか）
+git log                  コミット履歴を表示
+git log -n 10            直近10件のコミット履歴を表示。-nコマンドで表示件数を指定できる。
+
+git grep "検索単語"         "検索単語"を含むファイルを表示。便利そう
+
+
+
+
+
+//他のアカウントのリポジトリに参加するとき
+1.github上でforkする。（ 参加したいリポジトリの画面いって、右上らへん（starの横）のforkを押して、自分のリモートレポジトリにコピーする。
+2.forkしたリモートレポジトリをclone
+3.変更してリモートにpush
+4.github上で元のレポジトリ（他アカウント）にpull request
+
+//git pushでアクセストークンいるとき
+1. githubのsetting > developer setting > personal access tokens > generate new tokens でレポジトリに対するトークンを作成。
+2. 作成されたトークンをコピー
+3.git push の時に要求されusernameでユーザー名をpasswordでコピーしたトークンを入力
