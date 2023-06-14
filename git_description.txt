@@ -13,6 +13,8 @@ git add ファイル名　              　ステージング
 git add .                       　新しく追加したファイルすべてステージング
 git add ファイル名　ファイル名　    複数ファイルステージング
 
+git reset 	addを取り消す
+
 git commit -m "コメント"　          コメント付コミット
 
 
@@ -50,6 +52,14 @@ git log -n 10            直近10件のコミット履歴を表示。-nコマン
 
 git grep "検索単語"         "検索単語"を含むファイルを表示。便利そう
 
+git fetch 	リモートの変更をローカルに取り込む。既にローカルにリポジトリクローンしていて、リモートが変更になったとき。
+
+//cloneしたリポジトリを別のリポジトリにpushする流れ
+git clone リポジトリのURL
+git remote -v							
+git remote set-url origin push先にしたいリポジトリのURL 	//originというリモートリポジトリのアドレスを変更してる。
+git remote -v
+git push origin main	//originにローカルのmainブランチをpushしてる。
 
 
 
@@ -58,7 +68,7 @@ git grep "検索単語"         "検索単語"を含むファイルを表示。�
 1.github上でforkする。（ 参加したいリポジトリの画面いって、右上らへん（starの横）のforkを押して、自分のリモートレポジトリにコピーする。
 2.forkしたリモートレポジトリをclone
 3.変更してリモートにpush
-4.github上で元のレポジトリ（他アカウント）にpull request
+4.github上で元のレポジトリ（他アカウント）にpull request。（pull requests画面でnew pull request>margeしたい自分のブランチとマージ先の相手方のブランチを指定。）
 
 //git pushでアクセストークンいるとき
 1. githubのsetting > developer setting > personal access tokens > generate new tokens でレポジトリに対するトークンを作成。
