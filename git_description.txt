@@ -71,7 +71,10 @@ git push origin タグ名			//リモートにタグを反映してpushする。
 git tag 				//タグ一覧表示。
 git show タグ名				//各タグの詳細情報確認。誰がコミットしたのか、いつコミットしたのか、コミットIDなど。
 
-
+//git初回のuser登録方法　大体の場合、--globalプロパティつけるとgitすべてのリポジトリに適応されるので、今後登録する必要なし。ユーザー登録しておかないとコミットとかできない。コミット情報に誰がコミットしたか載せられないから。
+git config --global user.email "メールアドレス"
+git config --global user.name "ユーザー名" 
+//githubとの紐づけは初回push時にプラウザで行う。
 
 
 
