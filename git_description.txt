@@ -85,3 +85,5 @@ git show タグ名				//各タグの詳細情報確認。誰がコミットし�
 1. githubのsetting > developer setting > personal access tokens > generate new tokens でレポジトリに対するトークンを作成。
 2. 作成されたトークンをコピー
 3.git push の時に要求されusernameでユーザー名をpasswordでコピーしたトークンを入力
+
+// 他の人との共同プロジェクト
