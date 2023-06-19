@@ -85,9 +85,11 @@ git config --global user.name "ユーザー名"
 //gitの設定の確認
 git config -l
 
-//特定のコミットまで戻る方法
+//特定のコミットまで戻る方法。checkoutで特定コミットやタグに戻るときに、-bオプションを指定しないと、HeadはDetached状態となる。（どこのブランチにもいない状態。）
+//なので、元の状態に戻りたい場合はgit checkout 元のブランチ(masterやmain)　をすれば、checkout前に戻れる。
 git checkout HEAD ファイル名       //最後にコミットしたとこまで戻す 
-git checkout タグ名 ファイル名      //タグ付けされてる時点のコミットまで戻る。それ以降のコミット消えるので注意
+git checkout タグ名 ファイル名      //タグ付けされてる時点のコミットまで戻る。
+git checkout commitID              //ファイル名を書かないとコミットしたときのフォルダ状態にもどる。
 //resetコマンドはローカル内のコミット（一度もリモートに上げてない）に対してのみ使うこと。一度リモートに渡ったコミットに対してresetすると、コミット履歴がおかしくなる。
   git reset --hard                   //ファイル単位ではなく、リポジトリ毎、最新のコミット時点に戻す。
   git reset --hard HEAD~              //リポジトリ毎、1つ前のcommit状態に戻る。
