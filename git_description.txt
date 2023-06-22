@@ -29,8 +29,9 @@ git remote rm origin
 
 git clone クローンしたいリポジトリのURL     リポジトリのclone. 自動的に元のリポジトリがoriginとしてremote repositoyとして登録される。
 
+git fetch         ローカルに存在するremoteのオリジナル情報を最新のものに更新する。remoteブランチの変更をローカルに更新する。git mergeすることで、実際にローカルの内容が変更される。
 
-git pull origin リモートレポジトリのブランチ名      リモートレポジトリのブランチをいじりたいときのコマンド。
+git pull origin リモートレポジトリのブランチ名      リモートレポジトリのブランチをいじりたいときのコマンド。要はgit fetch + git merge。
 git pull 登録したリモートレポジトリ名　リモートレポジトリのブランチ名
 
 
@@ -118,4 +119,24 @@ git reset --hard ORIG_HEAD  //resetの取り消し。ミスってresetしたと�
 2. 作成されたトークンをコピー
 3.git push の時に要求されusernameでユーザー名をpasswordでコピーしたトークンを入力
 
-// 他の人との共同プロジェクト
+// conflictがおきたとき
+conflictはmerge(pullはfetch+mergeなのでpullも)するときに起きうる。merge(pull)が取り消されたわけじゃないので、conflictを解消して、再コミットする必要がある。
+同じファイルの同じ箇所を編集したときにconfilictと判定されるので、異なるファイルや異なる場所なら起きないかも。ただ異なる場所をどういうふうに判定するかわからないので、同じファイルは編集しない方がいいかも。
+clone（あるいは）したリポジトリをmergeするときに、元のオリジナルがすでに更新されていると発生する。
+オリジナルの方の変更とcloneした方の変更どちらが正しいか分からない状態。
+
+  //conflict起きたときのテキストに表示されるやつ
+
+    <<<<<HEAD  
+    現在ブランチでの変更点
+    =====      
+    merge先のブランチでの変更点
+ 　 >>>>>merge先ブランチ名
+
+//conflictの解消方法
+1.テキスト内に表示された<<<HEADとか===とかを削除して、残したい変更のみにする。
+2.git add でステージング
+3.git commit -m "" でコミット
+
+//pull requestはそもそもconflictしてたら発行できない？
+  一度、元の最新リポジトリと同期してから、pull requestを発行する。
